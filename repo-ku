@@ -1,0 +1,16 @@
+Yun-City/City（集合库）:
+ql repo https://github.com/Yun-City/City.git "jd_|jx_|gua_|jddj_|getJDCookie" "activity|backUp" "^jd[^_]|USER|function|utils|sendnotify|ZooFaker_Necklace|jd_Cookie|JDJRValidator_|sign_graphics_validate|ql|magic|cleancart_activity"
+
+leafTheFish_DeathNote 新增任务:
+ql repo https://github.com/leafTheFish/DeathNote.git
+
+青蛙蛤蟆:
+ql repo https://github.com/smiek2121/scripts.git "jd_|gua_" "" "ZooFaker_Necklace.js|JDJRValidator_Pure.js|sign_graphics_validate.js|cleancart_activity.js|jdCookie.js|sendNotify.js"
+
+6dylan6:
+ql repo https://github.com/6dylan6/jdpro.git "jd_|jx_|jddj_" "backUp" "^jd[^_]|USER|JD|function|sendNotify"
+
+ql repo https://github.com/JDWXX/ql_all.git "" "Backup|index|HT.*|sendNotify|ql" "HT.*|sendNotify|ql"
+
+faker3:
+ql repo https://git.metauniverse-cn.com/https://github.com/shufflewzc/faker3.git "jd_|jx_|gua_|jddj_|jdCookie" "activity|backUp" "^jd[^_]|USER|function|utils|sendNotify|ZooFaker_Necklace.js|JDJRValidator_|sign_graphics_validate|ql|JDSignValidator|magic|depend|h5sts" "main"
