@@ -1,5 +1,14 @@
+'''
+cron:  30 */2 * * * linkAI.py
+new Env('Link AI签到');
+'''
 import requests
+import os
 from wx_notify import send
+
+
+Authorization = os.getenv("linkBearer")
+
 
 url = 'https://link-ai.tech/api/chat/web/app/user/sign/in'  # 请求的URL
 
@@ -7,7 +16,7 @@ headers = {
     'Accept': 'application/json, text/plain, */*',
     'Accept-Encoding': 'gzip, deflate, br',
     'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
-    'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxNTA4MSIsImlhdCI6MTcwNDY5ODgxNywiZXhwIjoxNzA1MzkwMDE3fQ.R2u9_xRb43mCUprf8h2zLyS1e4aMqq6OFGb0mx-v_u2UjV512MrYqLk2xd5koNPVx6iL2qya_J_pmpKVtrwyxw',
+    'Authorization': Authorization,
     'Connection': 'keep-alive',
     'Cookie': '_gcl_au=1.1.1119734332.1703317262',
     'Host': 'link-ai.tech',
@@ -26,7 +35,7 @@ response = requests.get(url, headers=headers)
 print(response.status_code)  # 打印状态码
 datas=response.json()
 if response.status_code == 200:
-    if datas['success'] == 'True':
+    if datas['success'] == 'True' or  datas['success'] == True:
         send("LinkAI 签到",f"打卡成功：获得积分{datas['data']['score']}")
     else:
         send("LinkAI 签到",f"打卡成功：{datas['message']}")

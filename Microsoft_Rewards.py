@@ -1,4 +1,14 @@
-# -*- coding:utf-8 -*-
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Time    : 2024/11/14
+# @Author  : Haoj
+# @File    : Microsoft_Rewards.py
+# @Software: PyCharm
+
+'''
+cron:  33 12 * * * Microsoft_Rewards.py
+new Env('微软Rewards积分');
+'''
 import random
 import time
 from sendNotify import send

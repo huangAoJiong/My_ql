@@ -1,8 +1,9 @@
 /*
 积分换话费
 入口：首页-生活·缴费-积分换话费 
-update：2023/6/23
-20 2,15 * * * jd_dwapp.js
+update：2024/5/8
+Auther：Haoj
+cron  20 2,15 * * * my_jd_dwapp.js
 */
 
 const $ = new Env('积分换话费');

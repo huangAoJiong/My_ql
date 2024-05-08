@@ -1,3 +1,8 @@
+
+'''
+cron:  39 */2 * * * huopu.py
+new Env('火瀑签到签到');
+'''
 import requests
 from wx_notify import send
 url = 'https://pos.meituan.com/api/v1/crm/frontend/campaign/sign-in/participate'  # 替换为你要请求的URL

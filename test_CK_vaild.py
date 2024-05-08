@@ -1,6 +1,9 @@
  #from 7天前京豆详情 import  getJDCookie()
-# 0 */2 * * *
 
+'''
+cron:  0 */2 * * * test_CK_vaild.py
+new Env('测试CK有效性');
+'''
 import json
 import threading
 import requests

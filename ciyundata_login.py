@@ -1,6 +1,14 @@
 # !/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# @Time : 2023/05/03 10:23
+# -------------------------------
+# cron "1,30 9 * * *" script-path=xxx.py,tag=匹配cron用
+# const $ = new Env('慈云签到');
+'''
+new Env('慈云签到1');
+8 8 30 9 * jciyundata_login.py
+'''
 import urllib3
 import requests
 from bs4 import BeautifulSoup
