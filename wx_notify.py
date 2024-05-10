@@ -198,11 +198,30 @@ def send(title: str, content: str) -> None:
     [t.start() for t in ts]
     [t.join() for t in ts]
 
-
+def WxPusher_send_message(title="消息通知", content="测试消息", contentType=3, url='https://defalut.haoj.xyz'):
+                url = 'https://wxpusher.zjiecode.com/api/send/message'
+                headers = {'Content-Type': 'application/json'}
+                
+                data = {
+                    "appToken": "AT_0JgkmGIiHCWQ7Rv5upkOXSx6KibFB929",
+                    "content": content,
+                    "summary": title,
+                    "contentType": contentType,
+                    "uids": ["UID_IM7H6gD5nbBWRUNbIzXFfTGgQ4M2"],
+                    "url":url, 
+                    "verifyPay": False
+                }
+                try:
+                    response = requests.post(url, headers=headers, data=json.dumps(data))
+                    response.raise_for_status()
+                    print("Message sent successfully!")
+                except requests.exceptions.RequestException as e:
+                    print("Failed to send message:", e)
 
 def main():
     send("巴奴打卡~", "content")
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    print()
