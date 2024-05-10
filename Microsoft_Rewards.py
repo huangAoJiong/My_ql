@@ -13,7 +13,7 @@ import random
 import time
 import requests
 import json
-
+from wx_notify import WxPusher_send_message
 
 # 查询总积分
 def get_total_scores():
