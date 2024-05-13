@@ -1,12 +1,13 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2024/11/14
+# @Version : 2.0
 # @Author  : Haoj
 # @File    : Microsoft_Rewards.py
 # @Software: PyCharm
 
 '''
-cron:  33 13 * * * Microsoft_Rewards.py
+cron:  35 13 * * * Microsoft_Rewards.py
 new Env('微软Rewards积分');
 '''
 import random
@@ -119,11 +120,13 @@ def get_today_score():
 
     today_score = 0
     result = extract_progress_values(response.text)
-    if result:
-        try:
-            today_score = result['181']
-        except:
-            today_score = -1
+    try:
+        # max_pair = max(result.items(), key=lambda x: int(x[1]))
+        max_key = max(result, key=lambda x: int(result[x]))
+        today_score = result[str(max_key)]
+
+    except:
+        today_score = -1
     return today_score, result
 
 
