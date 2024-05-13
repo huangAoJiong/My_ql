@@ -260,6 +260,7 @@ def main():
             if PC_search_task(random_chinese_GBK2312(random.randint(5, 12))) == 200:
                 print("完成一次PC搜索。")
         else:
+            print("--------PC搜索任务已完成--------")
             break
         time.sleep(random.randint(5, 12))
     count = 0
@@ -271,12 +272,14 @@ def main():
             if Android_search_task(random_chinese_GBK2312(random.randint(5, 12))) == 200:
                 print("完成一次mobile搜索。")
         else:
+            print("--------Mobile搜索任务已完成--------")
             break
         time.sleep(random.randint(5, 12))
     today_all, today_item = get_today_score()
     Total_scores = get_total_scores()
+    print(f"总积分：{get_total_scores()}\n今日总积分：{today_all}\n")
     return Total_scores, today_all
-    # print(f"总积分：{get_total_scores()}\n今日总积分：{today_all}\n")
+    
 
 
 if __name__ == "__main__":
