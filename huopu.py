@@ -96,11 +96,11 @@ print(response.json())  # 如果返回的是JSON数据，可以通过response.js
 json1=response.json()
 WxPusher_message = ''
 if json1['success'] == "True" or json1['success'] == "true":
-    WxPusher_message+=json1['nextStepIncentives']['nextStepIncentivesContentPrefix']}
-    send("火瀑31天签到:7862",f"{json1['nextStepIncentives']['nextStepIncentivesContentPrefix']}")
+    WxPusher_message+=json1['nextStepIncentives']['nextStepIncentivesContentPrefix']
+    #send("火瀑31天签到:7862",f"{json1['nextStepIncentives']['nextStepIncentivesContentPrefix']}")
 else:
     WxPusher_message+=f"{response_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，7862账号可能没成功，去查看一下：{json1['nextStepIncentives']}"
-    send("火瀑31天签到:7862",f"{response_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，7862账号可能没成功，去查看一下：{json1['nextStepIncentives']}")
+    #send("火瀑31天签到:7862",f"{response_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，7862账号可能没成功，去查看一下：{json1['nextStepIncentives']}")
 response2 = requests.post(url, headers=headers2, data=datas[1])
 
 print(response2.status_code)
@@ -110,10 +110,10 @@ response2_status = requests.post(url_status, headers=headers2, data=datas[2])
 print(response2_status.json()['nextStepIncentives']['nextStepIncentivesContent'])
 if jsons2['success'] == "True" or jsons2['success'] == "true":
     WxPusher_message+=f"{jsons2['nextStepIncentives']['nextStepIncentivesContentPrefix']}"
-    send("火瀑31天签到:2938",f"{jsons2['nextStepIncentives']['nextStepIncentivesContentPrefix']}")
+    #send("火瀑31天签到:2938",f"{jsons2['nextStepIncentives']['nextStepIncentivesContentPrefix']}")
 else:
     WxPusher_message+=f"{response2_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，2938账号可能没成功，去查看一下：{jsons2['nextStepIncentives']}
-    send("火瀑31天签到:2938",f"{response2_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，2938账号可能没成功，去查看一下：{jsons2['nextStepIncentives']}")
+    #send("火瀑31天签到:2938",f"{response2_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，2938账号可能没成功，去查看一下：{jsons2['nextStepIncentives']}")
 
 
 WxPusher_send_message("火瀑签到得好礼",f"")
