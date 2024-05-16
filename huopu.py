@@ -1,6 +1,6 @@
 
 '''
-cron:  39 */2 * * * huopu.py
+cron:  39 15 * * * huopu.py
 new Env('火瀑签到签到');
 '''
 import requests
@@ -94,13 +94,14 @@ response_status = requests.post(url_status, headers=headers0, data=datas[3])
 print(response.status_code)
 print(response.json())  # 如果返回的是JSON数据，可以通过response.json()来获取
 json1=response.json()
+print(response_status.json()['nextStepIncentives']['nextStepIncentivesContent'])
 WxPusher_message = ''
 if json1['success'] == "True" or json1['success'] == "true":
     WxPusher_message+=json1['nextStepIncentives']['nextStepIncentivesContentPrefix']
-    #send("火瀑31天签到:7862",f"{json1['nextStepIncentives']['nextStepIncentivesContentPrefix']}")
+
 else:
-    WxPusher_message+=f"{response_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，7862账号可能没成功，去查看一下：{json1['nextStepIncentives']}"
-    #send("火瀑31天签到:7862",f"{response_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，7862账号可能没成功，去查看一下：{json1['nextStepIncentives']}")
+    WxPusher_message+=f"7862:{response_status.json()['msg']}, {response_status.json()['nextStepIncentives']['nextStepIncentivesContent']}\n\n"
+
 response2 = requests.post(url, headers=headers2, data=datas[1])
 
 print(response2.status_code)
@@ -112,8 +113,8 @@ if jsons2['success'] == "True" or jsons2['success'] == "true":
     WxPusher_message+=f"{jsons2['nextStepIncentives']['nextStepIncentivesContentPrefix']}"
     #send("火瀑31天签到:2938",f"{jsons2['nextStepIncentives']['nextStepIncentivesContentPrefix']}")
 else:
-    WxPusher_message+=f"{response2_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，2938账号可能没成功，去查看一下：{jsons2['nextStepIncentives']}
+    WxPusher_message+=f"2938:{response2_status.json()['msg']}，{response2_status.json()['nextStepIncentives']['nextStepIncentivesContent']}"
     #send("火瀑31天签到:2938",f"{response2_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，2938账号可能没成功，去查看一下：{jsons2['nextStepIncentives']}")
-
-
-WxPusher_send_message("火瀑签到得好礼",f"")
+print("***********************")
+print(WxPusher_message)
+WxPushe
