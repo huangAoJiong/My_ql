@@ -4,7 +4,7 @@ cron:  39 */2 * * * huopu.py
 new Env('火瀑签到签到');
 '''
 import requests
-from wx_notify import send
+from wx_notify import send,  WxPusher_send_message
 url = 'https://pos.meituan.com/api/v1/crm/frontend/campaign/sign-in/participate'  # 替换为你要请求的URL
 url_status = 'https://pos.meituan.com/api/v1/crm/frontend/campaign/sign-in/records-and-incentives'#2938
 cookiess=[
@@ -94,10 +94,13 @@ response_status = requests.post(url_status, headers=headers0, data=datas[3])
 print(response.status_code)
 print(response.json())  # 如果返回的是JSON数据，可以通过response.json()来获取
 json1=response.json()
+WxPusher_message = ''
 if json1['success'] == "True" or json1['success'] == "true":
-    send("火瀑31天签到",f"{json1['nextStepIncentives']['nextStepIncentivesContentPrefix']}")
+    WxPusher_message+=json1['nextStepIncentives']['nextStepIncentivesContentPrefix']}
+    send("火瀑31天签到:7862",f"{json1['nextStepIncentives']['nextStepIncentivesContentPrefix']}")
 else:
-    send("火瀑31天签到",f"{response_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，7862账号可能没成功，去查看一下：{json1['nextStepIncentives']}")
+    WxPusher_message+=f"{response_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，7862账号可能没成功，去查看一下：{json1['nextStepIncentives']}"
+    send("火瀑31天签到:7862",f"{response_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，7862账号可能没成功，去查看一下：{json1['nextStepIncentives']}")
 response2 = requests.post(url, headers=headers2, data=datas[1])
 
 print(response2.status_code)
@@ -106,7 +109,11 @@ jsons2=response2.json()
 response2_status = requests.post(url_status, headers=headers2, data=datas[2])
 print(response2_status.json()['nextStepIncentives']['nextStepIncentivesContent'])
 if jsons2['success'] == "True" or jsons2['success'] == "true":
-    # print(f"{jsons2['nextStepIncentives']['nextStepIncentivesContentPrefix']}")
-    send("火瀑31天签到:7862",f"{jsons2['nextStepIncentives']['nextStepIncentivesContentPrefix']}")
+    WxPusher_message+=f"{jsons2['nextStepIncentives']['nextStepIncentivesContentPrefix']}"
+    send("火瀑31天签到:2938",f"{jsons2['nextStepIncentives']['nextStepIncentivesContentPrefix']}")
 else:
+    WxPusher_message+=f"{response2_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，2938账号可能没成功，去查看一下：{jsons2['nextStepIncentives']}
     send("火瀑31天签到:2938",f"{response2_status.json()['nextStepIncentives']['nextStepIncentivesContent']}，2938账号可能没成功，去查看一下：{jsons2['nextStepIncentives']}")
+
+
+WxPusher_send_message("火瀑签到得好礼",f"")
