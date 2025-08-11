@@ -651,6 +651,24 @@ def send(title: str, content: str) -> None:
     [t.start() for t in ts]
     [t.join() for t in ts]
 
+def send_qq_group_msg(title, msg):
+        """
+        发送一个带两个参数的 GET 请求
+        :param url: 目标 URL
+        :param param1: 第一个参数值
+        :param param2: 第二个参数值
+        :return: 响应对象
+        """
+        url = "http://192.168.192.231:25733/send_group_msg"
+        params = {"group_id": "455219596", "message": title + "\n\n" + msg}
+        try:
+            response = requests.get(url, params=params)
+            response.raise_for_status()  # 如果状态码不是 200-399，会抛异常
+            return response.text
+        except requests.RequestException as e:
+            print(f"请求出错: {e}")
+            return None
+
 
 def main():
     send("title", "content")
